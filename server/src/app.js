@@ -7,24 +7,13 @@ import authRouter from "./routes/auth.route.js";
 import doctorRouter from "./routes/doctor.route.js";
 import patientRouter from "./routes/patient.route.js";
 import dashboardRouter from "./routes/dashboard.route.js";
-import { ApiError } from "./utils/ApiError.js";
 
 const app = express();
 
-const allowedOrigins = [process.env.CORS_ORIGIN].filter(Boolean);
-
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
-
-      return callback(new Error(`CORS blocked for origin: ${origin}`));
-    },
+    origin: process.env.CORS_ORIGIN,
     credentials: true,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
 
