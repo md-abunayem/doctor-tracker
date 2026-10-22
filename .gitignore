@@ -1,8 +1,7 @@
-**/.env
-**/.env.*
 !**/.env.example
 **/node_modules/
 client/.next/
 client/out/
 client/build/
 **/*.tsbuildinfo
+config.bat
