@@ -120,7 +120,7 @@ Open `http://localhost:3000`. The API CORS configuration allows `http://localhos
 | Variable | Purpose | Example |
 | --- | --- | --- |
 | `PORT` | Express listening port | `5000` |
-| `CORS_ORIGIN` | Allowed frontend origins, comma-separated | `http://localhost:3000,http://localhost:3001` |
+| `CORS_ORIGIN` | Allowed frontend origins, comma-separated | `http://localhost:3000` |
 | `MONGODB_URI` | MongoDB connection URI, without a database path if using the default database selection | `mongodb://127.0.0.1:27017` |
 | `ACCESS_TOKEN_SECRET` | Secret used to sign access JWTs | Generate a private random value |
 | `ACCESS_TOKEN_EXPIRY` | Access-token lifetime | `15m` |
@@ -134,7 +134,7 @@ Open `http://localhost:3000`. The API CORS configuration allows `http://localhos
 
 | Variable | Purpose | Example |
 | --- | --- | --- |
-| `NEXT_PUBLIC_API_BASE_URL` | Base URL for the Express API | `http://localhost:5000/api/v1` |
+| `NEXT_API_BASE_URL` | Base URL for the Express API | `http://localhost:5000/api/v1` |
 
 Only put public configuration in variables prefixed with `NEXT_PUBLIC_`; those values are embedded into frontend JavaScript. Never put secrets there.
 
@@ -171,7 +171,7 @@ flowchart LR
     RTK --> Next
 ```
 
-The frontend and API run as separate services. The browser calls the Express API at `NEXT_PUBLIC_API_BASE_URL`; the API validates input, checks authentication where configured, performs Mongoose queries, and returns JSON responses. The browser includes cookies on API requests. Doctor and patient list pagination, search, and filters are applied by the API and MongoDB rather than only in the browser.
+The frontend and API run as separate services. The browser calls the Express API at `NEXT_API_BASE_URL`; the API validates input, checks authentication where configured, performs Mongoose queries, and returns JSON responses. The browser includes cookies on API requests. Doctor and patient list pagination, search, and filters are applied by the API and MongoDB rather than only in the browser.
 
 ## API overview
 
