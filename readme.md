@@ -134,7 +134,7 @@ Open `http://localhost:3000`. The API CORS configuration allows `http://localhos
 
 | Variable | Purpose | Example |
 | --- | --- | --- |
-| `NEXT_API_BASE_URL` | Base URL for the Express API | `http://localhost:5000/api/v1` |
+| `NEXT_PUBLIC_API_BASE_URL` | Express server origin; API requests are proxied through Next.js on the frontend origin | `http://localhost:5000` |
 
 Only put public configuration in variables prefixed with `NEXT_PUBLIC_`; those values are embedded into frontend JavaScript. Never put secrets there.
 
@@ -145,7 +145,7 @@ Only put public configuration in variables prefixed with `NEXT_PUBLIC_`; those v
 - **Demo email:** `admin@example.com`
 - **Demo password:** Shared privately with the recruiter; it is intentionally not published in this README.
 
-Replace both URL placeholders after deployment. The backend URL should point to the API base, for example `https://api.example.com/api/v1`, not just the hosting dashboard or server root.
+Set the Vercel `NEXT_PUBLIC_API_BASE_URL` to the backend origin, for example `https://doctor-tracker-oj9m.onrender.com` (no `/api/v1` suffix). Next.js proxies `/api/*` requests to the backend so authentication cookies remain first-party to the deployed frontend. Set the Render `CORS_ORIGIN` to the exact frontend origin, for example `https://doctor-tracker-peach.vercel.app`.
 
 ## System architecture and data flow
 
@@ -161,7 +161,8 @@ flowchart LR
 
     Admin --> Next
     Next --> RTK
-    RTK -->|HTTP JSON and cookies| Express
+    RTK -->|same-origin HTTP JSON and cookies| Next
+    Next -->|proxied API requests| Express
     Express --> Validate
     Validate --> Mongoose
     Mongoose --> Mongo
