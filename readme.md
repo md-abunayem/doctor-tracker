@@ -208,33 +208,57 @@ The frontend is a Next.js App Router application, while Express runs as its own 
 
 API endpoints and request caching are centralized in `client/lib/api.ts`, while Redux store configuration lives in `client/lib/store.ts`. RTK Query provides generated hooks and invalidation tags so doctor or patient mutations can refresh related cached data, including dashboard data. This avoids duplicating request/loading/cache logic across pages. The trade-off is that endpoint response types and tag invalidation rules must stay aligned with the Express API.
 
-## Visual evidence
+## Visual evidence (Web & Mobile View)
 
-Replace the placeholder image paths below with screenshots captured from the running app. Keep the screenshots in `docs/images/` (or update the paths if you store them elsewhere). Capture both desktop and mobile layouts.
+##Web View
+
+### Dashboard Management
+
+A responsive web-based dashboard for managing doctors and patients, with a secure admin login interface.
+
+### Dashboard Management
+
+![Dashboard Management](docs/images/dashboard.png)
+
+### Doctor Management
+
+![Doctor Management](docs/images/doctors.png)
+
+### Doctor Details
+
+![Doctor Details](docs/images/doctor_details.png)
+
+### Patient Management
+
+![Patient Management](docs/images/patients.png)
+
+### Admin Login
+
+![Admin Login](docs/images/login.png)
+
+## Mobile View
 
 ### Dashboard
 
-![Dashboard — desktop view](docs/images/dashboard-desktop.png)
+![Dashboard Mobile View](docs/images/dashboard_mobile.png)
 
-![Dashboard — mobile view](docs/images/dashboard-mobile.png)
+### Doctor Management
 
-### Doctor management
+![Doctor Management Mobile View](docs/images/doctors_mobile.png)
 
-![Doctor list and filters — desktop view](docs/images/doctors-desktop.png)
+### Doctor Details
 
-![Doctor list — mobile view](docs/images/doctors-mobile.png)
+![Doctor Details Mobile View](docs/images/doctor_details_mobile.png)
 
-### Patient management
+### Patient Management
 
-![Patient list — desktop view](docs/images/patients-desktop.png)
+![Patient Management Mobile View](docs/images/patients_mobile.png)
 
-![Patient list — mobile view](docs/images/patients-mobile.png)
+### Admin Login
 
-### Login
+![Admin Login Mobile View](docs/images/login_mobile.png)
 
-![Admin login — desktop view](docs/images/login-desktop.png)
 
-![Admin login — mobile view](docs/images/login-mobile.png)
 
 ## Validation and production build
 
