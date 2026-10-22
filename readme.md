@@ -256,4 +256,4 @@ At the time of writing, the TypeScript check and production build pass. ESLint r
 - The API currently leaves `GET /api/v1/patients` public; add authentication if patient data must be restricted.
 - Although the API has a refresh-token endpoint, the frontend does not currently retry failed requests after refreshing an expired access token. Users may need to sign in again when the access token expires.
 - Client-side route redirects are for user experience, not authorization. Keep access control enforced in API middleware.
-- The API sets authentication cookies as HTTP-only and secure. Configure HTTPS and matching CORS origins for deployment.
+- The API sets authentication cookies as HTTP-only, secure, and `SameSite=None` so browser requests can include them across the separately hosted frontend and API. Configure HTTPS and set `CORS_ORIGIN` to the exact frontend origin(s), comma-separated (for example, `https://doctor-tracker-peach.vercel.app`).

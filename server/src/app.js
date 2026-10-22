@@ -9,10 +9,14 @@ import patientRouter from "./routes/patient.route.js";
 import dashboardRouter from "./routes/dashboard.route.js";
 
 const app = express();
+const corsOrigins = (process.env.CORS_ORIGIN || "")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
 
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: corsOrigins,
     credentials: true,
   }),
 );
