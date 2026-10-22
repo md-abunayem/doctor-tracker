@@ -150,28 +150,7 @@ Only put public configuration in variables prefixed with `NEXT_PUBLIC_`; those v
 
 The browser renders the Next.js application and uses RTK Query for client-side API calls and caching. Those requests go to the same-origin `/api/v1` path, which Next.js rewrites to the standalone Express API. Express validates requests, checks JWT authentication on protected routes, and uses Mongoose to query MongoDB. Authentication cookies are HTTP-only, secure, and configured for the deployed HTTPS setup.
 
-```mermaid
-flowchart LR
-    Browser[Administrator browser]
-    Next[Next.js UI and API proxy]
-    RTK[RTK Query in browser]
-    Express[Standalone Express REST API]
-    Auth[JWT authentication and Zod validation]
-    Mongoose[Mongoose models and queries]
-    Mongo[(MongoDB)]
-
-    Browser --> Next
-    Browser --> RTK
-    RTK -->|same-origin /api/v1 requests and cookies| Next
-    Next -->|rewritten /api/v1 requests| Express
-    Express --> Auth
-    Auth --> Mongoose
-    Mongoose --> Mongo
-    Mongo --> Mongoose
-    Mongoose --> Express
-    Express --> Next
-    Next --> RTK
-```
+![Doctor Tracker data flow and service architecture](docs/data_flow.png)
 
 ### API overview
 
@@ -239,23 +218,33 @@ Screenshots show the desktop and mobile layouts for the dashboard, doctor list a
 
 #### Dashboard
 
-![Doctor Tracker dashboard on mobile](docs/dashboard_mobile.jpeg)
+<p align="center">
+  <img src="docs/dashboard_mobile.jpeg" alt="Doctor Tracker dashboard on mobile" width="250">
+</p>
 
 #### Doctor management
 
-![Doctor management on mobile](docs/doctors_mobile.jpeg)
+<p align="center">
+  <img src="docs/doctors_mobile.jpeg" alt="Doctor management on mobile" width="250">
+</p>
 
 #### Doctor details
 
-![Doctor details on mobile](docs/doctor_details_mobile.jpeg)
+<p align="center">
+  <img src="docs/doctor_details_mobile.jpeg" alt="Doctor details on mobile" width="250">
+</p>
 
 #### Patient management
 
-![Patient management on mobile](docs/patient_mobile.jpeg)
+<p align="center">
+  <img src="docs/patient_mobile.jpeg" alt="Patient management on mobile" width="250">
+</p>
 
 #### Admin login
 
-![Admin login on mobile](docs/login_mobile.png)
+<p align="center">
+  <img src="docs/login_mobile.png" alt="Admin login on mobile" width="250">
+</p>
 
 ## Validation
 
